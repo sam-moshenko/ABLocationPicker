@@ -530,8 +530,6 @@ open class ABLocationPickerVC: UIViewController, UIGestureRecognizerDelegate {
         tableView.keyboardDismissMode = .onDrag
         tableView.backgroundColor = tableViewBackgroundColor
         
-        aAnnotation.coordinate = getCurrentLocation()?.coordinate ?? CLLocationCoordinate2D()
-        bAnnotation.coordinate = getCurrentLocation()?.coordinate ?? CLLocationCoordinate2D()
         aAnnotation.title = "Source"
         bAnnotation.title = "Destination"
         
@@ -961,8 +959,6 @@ extension ABLocationPickerVC: UISearchBarDelegate {
                 self.tableView.reloadData()
             })
         } else {
-            aSelectedLocationItem = nil
-            bSelectedLocationItem = nil
             searchResultLocations.removeAll()
             tableView.reloadData()
             closeMapView()
