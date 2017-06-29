@@ -29,6 +29,15 @@
 import Foundation
 import MapKit
 
+let defaultRegionZoomFactor = 2.0
+
+func zoomRegion( region: inout MKCoordinateRegion, byFactor delta: Double) {
+    var span: MKCoordinateSpan = region.span
+    span.latitudeDelta *= delta
+    span.longitudeDelta *= delta
+    region.span = span
+}
+
 func regionForAnnotations(annotations : [MKAnnotation]) ->MKCoordinateRegion {
     
     var minLat: CLLocationDegrees = 90.0
@@ -57,7 +66,10 @@ func regionForAnnotations(annotations : [MKAnnotation]) ->MKCoordinateRegion {
     
     let center = CLLocationCoordinate2DMake((maxLat - span.latitudeDelta / 2), maxLon - span.longitudeDelta / 2)
     
-    return MKCoordinateRegionMake(center, span)
+    var region = MKCoordinateRegionMake(center, span)
+    zoomRegion(region: &region, byFactor: defaultRegionZoomFactor)
+    
+    return region
 }
 
 func coordinateObject(fromTuple coordinateTuple: (latitude: Double, longitude: Double)) -> CLLocationCoordinate2D {
