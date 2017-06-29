@@ -117,7 +117,7 @@ open class LocationItem: NSObject, NSCoding {
         self.mapItem = mapItem
     }
     
-    public init(coordinate: (latitude: Double, longitude: Double), addressDictionary: [String: AnyObject]) {
+    public init(coordinate: (latitude: Double, longitude: Double), addressDictionary: [String: AnyObject]?) {
         let placeMark = MKPlacemark(coordinate: coordinateObject(fromTuple: coordinate), addressDictionary: addressDictionary)
         self.mapItem = MKMapItem(placemark: placeMark)
     }

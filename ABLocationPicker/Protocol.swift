@@ -57,7 +57,7 @@ import Foundation
      
      - parameter locationItem: The location item user selected
      */
-    @objc optional func locationDidSelect(locationItem: LocationItem)
+    @objc optional func locationDidSelect(aLocationItem: LocationItem?, bLocationItem: LocationItem?)
     
     /**
      This delegate method would be called after user finally pick a location.
@@ -83,7 +83,7 @@ import Foundation
      
      - parameter locationItem: The location item user picked
      */
-    @objc optional func locationDidPick(locationItem: LocationItem)
+    @objc optional func locationDidPick(aLocationItem: LocationItem?, bLocationItem: LocationItem?)
     
     /**
      This delegate method would be called when user try to fetch current location without granting location access.
@@ -109,7 +109,7 @@ import Foundation
      
      - parameter locationPicker `LocationPicker` instance that needs to response to user's location request
      */
-    @objc optional func locationDidDeny(locationPicker: LocationPicker)
+    @objc optional func locationDidDeny(locationPicker: ABLocationPickerVC)
     
 }
 

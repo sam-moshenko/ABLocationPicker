@@ -31,14 +31,14 @@ import UIKit
 public class LocationCell: UITableViewCell {
     
     open var locationItem: LocationItem?
-    open var locationType: LocationPicker.LocationType!
+    open var locationType: ABLocationPickerVC.LocationType!
     
     open let iconView = UIImageView()
     open let locationNameLabel = UILabel()
     open let locationAddressLabel = UILabel()
     open let containerView = UIView()
     
-    public convenience init(locationType: LocationPicker.LocationType, locationItem: LocationItem?) {
+    public convenience init(locationType: ABLocationPickerVC.LocationType, locationItem: LocationItem?) {
         self.init()
         self.locationType = locationType
         self.locationItem = locationItem
