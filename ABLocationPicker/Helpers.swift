@@ -29,48 +29,48 @@
 import Foundation
 import MapKit
 
-let defaultRegionZoomFactor = 2.0
-
-func zoomRegion( region: inout MKCoordinateRegion, byFactor delta: Double) {
-    var span: MKCoordinateSpan = region.span
-    span.latitudeDelta *= delta
-    span.longitudeDelta *= delta
-    region.span = span
-}
-
-func regionForAnnotations(annotations : [MKAnnotation]) ->MKCoordinateRegion {
-    
-    var minLat: CLLocationDegrees = 90.0
-    var maxLat: CLLocationDegrees = -90.0
-    var minLon: CLLocationDegrees = 180.0
-    var maxLon: CLLocationDegrees = -180.0
-    
-    for annotation in annotations as [MKAnnotation] {
-        let lat = Double(annotation.coordinate.latitude)
-        let long = Double(annotation.coordinate.longitude)
-        if (lat < minLat) {
-            minLat = lat
-        }
-        if (long < minLon) {
-            minLon = long
-        }
-        if (lat > maxLat) {
-            maxLat = lat
-        }
-        if (long > maxLon) {
-            maxLon = long
-        }
-    }
-    
-    let span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon)
-    
-    let center = CLLocationCoordinate2DMake((maxLat - span.latitudeDelta / 2), maxLon - span.longitudeDelta / 2)
-    
-    var region = MKCoordinateRegionMake(center, span)
-    zoomRegion(region: &region, byFactor: defaultRegionZoomFactor)
-    
-    return region
-}
+//let defaultRegionZoomFactor = 2.0
+//
+//func zoomRegion( region: inout MKCoordinateRegion, byFactor delta: Double) {
+//    var span: MKCoordinateSpan = region.span
+//    span.latitudeDelta *= delta
+//    span.longitudeDelta *= delta
+//    region.span = span
+//}
+//
+//func regionForAnnotations(annotations : [MKAnnotation]) ->MKCoordinateRegion {
+//    
+//    var minLat: CLLocationDegrees = 90.0
+//    var maxLat: CLLocationDegrees = -90.0
+//    var minLon: CLLocationDegrees = 180.0
+//    var maxLon: CLLocationDegrees = -180.0
+//    
+//    for annotation in annotations as [MKAnnotation] {
+//        let lat = Double(annotation.coordinate.latitude)
+//        let long = Double(annotation.coordinate.longitude)
+//        if (lat < minLat) {
+//            minLat = lat
+//        }
+//        if (long < minLon) {
+//            minLon = long
+//        }
+//        if (lat > maxLat) {
+//            maxLat = lat
+//        }
+//        if (long > maxLon) {
+//            maxLon = long
+//        }
+//    }
+//    
+//    let span = MKCoordinateSpanMake(maxLat - minLat, maxLon - minLon)
+//    
+//    let center = CLLocationCoordinate2DMake((maxLat - span.latitudeDelta / 2), maxLon - span.longitudeDelta / 2)
+//    
+//    var region = MKCoordinateRegionMake(center, span)
+//    zoomRegion(region: &region, byFactor: defaultRegionZoomFactor)
+//    
+//    return region
+//}
 
 func coordinateObject(fromTuple coordinateTuple: (latitude: Double, longitude: Double)) -> CLLocationCoordinate2D {
     return CLLocationCoordinate2D(latitude: coordinateTuple.latitude, longitude: coordinateTuple.longitude)

@@ -653,8 +653,7 @@ open class ABLocationPickerVC: UIViewController, UIGestureRecognizerDelegate {
     private func showMapView(toFit annotations: [MKAnnotation]) {
         mapViewHeightConstraint.constant = mapViewHeight
         
-        let coordinateRegion = regionForAnnotations(annotations: annotations)
-        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.showAnnotations(annotations, animated: true)
     }
     
     fileprivate func closeMapView() {
@@ -695,8 +694,8 @@ open class ABLocationPickerVC: UIViewController, UIGestureRecognizerDelegate {
         locationDidSelect(aLocationItem: aSelectedLocationItem, bLocationItem: bSelectedLocationItem)
     }
     
-    fileprivate func reverseGeocodeLocation(_ location: CLLocation, withA: Bool) {
-        geocoder.cancelGeocode()
+    public func reverseGeocodeLocation(_ location: CLLocation, withA: Bool) {
+//        geocoder.cancelGeocode()
         geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if let error = error {
                 print(error)
